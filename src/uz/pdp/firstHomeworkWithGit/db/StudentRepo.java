@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class StudentRepo implements Repository<Student> {
     private static final String PATH="src/uz/pdp/firstHomeworkWithGit/db/data_base.txt";
@@ -42,7 +43,8 @@ public class StudentRepo implements Repository<Student> {
 
     @Override
     public void update(Student student) {
-
+        student.setAge(10);
+        student.setName("aa");
     }
 
     @Override
