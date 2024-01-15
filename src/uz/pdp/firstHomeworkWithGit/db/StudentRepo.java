@@ -2,6 +2,11 @@ package uz.pdp.firstHomeworkWithGit.db;
 
 import uz.pdp.firstHomeworkWithGit.entity.Student;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentRepo implements Repository<Student> {
@@ -17,6 +22,19 @@ public class StudentRepo implements Repository<Student> {
         }
         return singleton;
     }
+    @SuppressWarnings("unchecked")
+    private static List<Student> loadData() {
+
+        try(InputStream inputStream=new FileInputStream(PATH);
+            ObjectInputStream objectInputStream=new ObjectInputStream(inputStream);
+        ) {
+            return (List<Student>) objectInputStream.readObject();
+
+        } catch (IOException | ClassNotFoundException e) {
+            return new ArrayList<>();
+        }
+    }
+
     @Override
     public void save(Student student) {
 
