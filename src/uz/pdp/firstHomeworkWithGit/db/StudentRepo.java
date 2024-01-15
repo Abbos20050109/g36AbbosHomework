@@ -8,6 +8,9 @@ public class StudentRepo implements Repository<Student> {
     private static final String PATH="src/uz/pdp/firstHomeworkWithGit/db/data_base.txt";
     private List<Student> students;
     private static StudentRepo singleton;
+    private StudentRepo(List<Student> users) {
+        this.students=users;
+    }
     @Override
     public void save(Student student) {
 
