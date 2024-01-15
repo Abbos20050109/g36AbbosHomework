@@ -11,6 +11,12 @@ public class StudentRepo implements Repository<Student> {
     private StudentRepo(List<Student> users) {
         this.students=users;
     }
+    public static StudentRepo getInstance(){
+        if (singleton==null){
+            singleton=new StudentRepo(loadData());
+        }
+        return singleton;
+    }
     @Override
     public void save(Student student) {
 
